@@ -1,0 +1,23 @@
+{
+  "name": "@toujou/geometric-paint-worklet",
+  "version": "1.0.0",
+  "description": "A CSS Paint Worklet that renders geometric figures",
+  "main": "index.html",
+  "scripts": {
+    "build:js": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boguz/geometric-paint-worklet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boguz/geometric-paint-worklet/issues"
+  },
+  "homepage": "https://github.com/boguz/geometric-paint-worklet#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.2"
+  }
+}
