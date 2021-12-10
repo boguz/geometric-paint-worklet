@@ -7,9 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Geometric Paint Worklet</title>
 
+    <link rel="stylesheet" href="styles/geometric-paint-worklet.css" type="text/css">
     <script src="dist/geometric-paint-worklet.js" defer></script>
 </head>
 <body>
+
+<main>
+    <section class="section">
+        <h1 class="section__title">Geometric Paint Worklet</h1>
+    </section>
+
+    <script>
+      CSS.paintWorklet.addModule('dist/geometric-paint-worklet.js');
+    </script>
+</main>
 
 </body>
 </html>

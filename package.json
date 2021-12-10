@@ -4,7 +4,7 @@
   "description": "A CSS Paint Worklet that renders geometric figures",
   "main": "index.html",
   "scripts": {
-    "build:js": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js"
+    "build:js": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js --format=cjs"
   },
   "repository": {
     "type": "git",
