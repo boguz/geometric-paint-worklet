@@ -4,7 +4,80 @@
     box-sizing: border-box;
 }
 
+/**
+ * Number of shapes to be rendered
+ * Integer
+ * Default: 12
+ */
+@property --gpw-number-of-shapes {
+    syntax: "<number>";
+    initial-value: 12;
+    inherits: false;
+}
+
+/**
+ * Set size of shapes to render (in px)
+ * Integer
+ * Default: 40
+ */
+@property --gpw-shape-size {
+    syntax: "<number>";
+    initial-value: 40;
+    inherits: false;
+}
+
+/**
+ * Set stroke width of the shapes (in px)
+ * Integer
+ * Default: 4
+ */
+@property --gpw-line-width {
+    syntax: "<number>";
+    initial-value: 40;
+    inherits: false;
+}
+
+/**
+ * Set an array of possible colors to choose from randomly
+ * Array of valid css colors
+ * Default: ['#FFF59D', '#FFAB91', '#80DEEA', '#E57373']
+ */
+@property --gpw-possible-colors {
+    syntax: "<array>";
+    initial-value: ['#FFF59D', '#FFAB91', '#80DEEA', '#E57373'];
+    inherits: false;
+}
+
+/**
+ * Set if shapes should be filled
+ * Boolean : true | false
+ * Default: false
+ */
+@property --gpw-fill-shapes {
+    syntax: "<boolean>";
+    initial-value: false;
+    inherits: false;
+}
+
+/**
+ * Set opacity of the shapes
+ * Number (valid opacity value)
+ * Default: 1
+ */
+@property --gpw-opacity {
+    syntax: "<number>";
+    initial-value: 1;
+    inherits: false;
+}
+
 .section {
+    --gpw-number-of-shapes: 48;
+    --gpw-shape-size: 40;
+    --gpw-line-width: 4;
+    /* --gpw-possible-colors: ['rgb(255, 0, 0)', 'tomato', 'grey'];*/
+    --gpw-fill-shapes: false;
+    --gpw-opacity: .5;
+
     height: 100vh;
     background-color: rgba(12, 22, 32, .8);
     display: flex;
