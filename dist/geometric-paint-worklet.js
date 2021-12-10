@@ -57,7 +57,7 @@ function randomIntFromInterval(min, max) {
 }
 
 // src/geometric-paint-worklet.ts
-registerPaint("bubblePaint", class {
+registerPaint("geometricPaintWorklet", class {
   static get inputProperties() {
     return [
       "--gpw-number-of-shapes",

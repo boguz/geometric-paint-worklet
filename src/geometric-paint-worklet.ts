@@ -4,7 +4,7 @@ import { ShapePolygon } from "./ShapePolygon";
 import { randomIntFromInterval } from "./utils";
 
 // @ts-ignore
-registerPaint('bubblePaint', class {
+registerPaint('geometricPaintWorklet', class {
 	static get inputProperties() {
 		return [
 			'--gpw-number-of-shapes',
