@@ -1,7 +1,8 @@
 import { PossibleShape } from "./types";
 import { ShapeCircle } from "./ShapeCircle";
 import { ShapePolygon } from "./ShapePolygon";
-import { randomIntFromInterval } from "./utils";
+import { getRandomItemFromArray, randomIntFromInterval } from "./utils";
+import { getSettings } from "./settings";
 
 // @ts-ignore
 registerPaint('geometricPaintWorklet', class {
@@ -17,15 +18,9 @@ registerPaint('geometricPaintWorklet', class {
 	}
 	
 	paint(ctx, geom, props) {
-		const numberOfShapes = parseInt(props.get('--gpw-number-of-shapes')) || 12;
-		const shapeSize = parseInt(props.get('--gpw-shape-size')) || 40;
-		const lineWidth = parseInt(props.get('--gpw-line-width')) || 4;
-		const defaultPossibleColors = ['#FFF59D', '#FFAB91', '#80DEEA', '#E57373'];
-		const fillShapes: boolean = (props.get('--gpw-fill-shapes').toString().trim() === 'true') || false;
-		const opacity = parseFloat(props.get('--gpw-opacity')) || 1;
-		const possibleColors = props.get('--gpw-possible-colors').length > 0
-			? JSON.parse(props.get('--gpw-possible-colors'))
-			: defaultPossibleColors;
+		const elWidth = geom.width;
+		const elHeight = geom.height;
+		const settings = getSettings(props);
 		const possibleShapes: PossibleShape[] = [
 			PossibleShape.CIRCLE,
 			PossibleShape.TRIANGLE,
@@ -34,48 +29,45 @@ registerPaint('geometricPaintWorklet', class {
 			PossibleShape.HEXAGON,
 		];
 		
-		const elWidth = geom.width;
-		const elHeight = geom.height;
+		ctx.globalAlpha = settings.opacity;
 		
-		ctx.globalAlpha = opacity;
-		
-		for (let i = 0; i < numberOfShapes; i ++) {
+		for (let i = 0; i < settings.numberOfShapes; i ++) {
 			const rotation = randomIntFromInterval(0, 360);
-			const selectedShape = possibleShapes[Math.floor(Math.random() * possibleShapes.length)];
+			const selectedShape = getRandomItemFromArray(possibleShapes);
 			const position = {
-				x: Math.random() * elWidth,
-				y: Math.random() * elHeight,
+				x: randomIntFromInterval(0, elWidth),
+				y: randomIntFromInterval(0, elHeight),
 			}
 			
-			const selectedColor = possibleColors[Math.floor(Math.random() * possibleColors.length)];
-			ctx.lineWidth = lineWidth;
+			const selectedColor = getRandomItemFromArray(settings.possibleColors);
+			ctx.lineWidth = settings.lineWidth;
 			ctx.strokeStyle = selectedColor;
-			if (fillShapes) {
+			if (settings.fillShapes) {
 				ctx.fillStyle = selectedColor;
 			}
 			ctx.beginPath();
 			
 			switch (selectedShape) {
 				case PossibleShape.CIRCLE:
-					new ShapeCircle(ctx, shapeSize, position);
+					new ShapeCircle(ctx, settings.shapeSize, position);
 					break;
 				case PossibleShape.TRIANGLE:
-					new ShapePolygon(ctx, shapeSize, position, 3, -rotation);
+					new ShapePolygon(ctx, settings.shapeSize, position, 3, -rotation);
 					break;
 				case PossibleShape.SQUARE:
-					new ShapePolygon(ctx, shapeSize, position, 4, rotation);
+					new ShapePolygon(ctx, settings.shapeSize, position, 4, rotation);
 					break;
 				case PossibleShape.PENTAGON:
-					new ShapePolygon(ctx, shapeSize, position, 5, -rotation);
+					new ShapePolygon(ctx, settings.shapeSize, position, 5, -rotation);
 					break;
 				case PossibleShape.HEXAGON:
-					new ShapePolygon(ctx, shapeSize, position, 6, rotation);
+					new ShapePolygon(ctx, settings.shapeSize, position, 6, rotation);
 					break;
 			}
 			
 			ctx.closePath();
 			ctx.stroke();
-			if (fillShapes) {
+			if (settings.fillShapes) {
 				ctx.fill();
 			}
 		}

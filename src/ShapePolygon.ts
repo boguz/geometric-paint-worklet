@@ -1,5 +1,9 @@
 import { BasicShape } from "./basicShape";
 
+/**
+ * Draw a polygon on the context,
+ * The number of sides for the polygon are passes via 'sideCount' parameter.
+ */
 export class ShapePolygon extends BasicShape {
 	rotation: number;
 	radians: number;

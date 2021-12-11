@@ -55,6 +55,27 @@ var ShapePolygon = class extends BasicShape {
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+function getRandomItemFromArray(arrayToSearch) {
+  return arrayToSearch[Math.floor(Math.random() * arrayToSearch.length)];
+}
+
+// src/settings.ts
+var defaultNumberOfShapes = 12;
+var defaultShapeSize = 40;
+var defaultLineWidth = 4;
+var defaultPossibleColors = ["#FFF59D", "#FFAB91", "#80DEEA", "#E57373"];
+var defaultFillShapes = false;
+var defaultOpacity = 1;
+function getSettings(props) {
+  return {
+    numberOfShapes: parseInt(props.get("--gpw-number-of-shapes")) || defaultNumberOfShapes,
+    shapeSize: parseInt(props.get("--gpw-shape-size")) || defaultShapeSize,
+    lineWidth: parseInt(props.get("--gpw-line-width")) || defaultLineWidth,
+    fillShapes: props.get("--gpw-fill-shapes").toString().trim() === "true" || defaultFillShapes,
+    opacity: parseFloat(props.get("--gpw-opacity")) || defaultOpacity,
+    possibleColors: props.get("--gpw-possible-colors").length > 0 ? JSON.parse(props.get("--gpw-possible-colors")) : defaultPossibleColors
+  };
+}
 
 // src/geometric-paint-worklet.ts
 registerPaint("geometricPaintWorklet", class {
@@ -69,19 +90,9 @@ registerPaint("geometricPaintWorklet", class {
     ];
   }
   paint(ctx, geom, props) {
-    const numberOfShapes = parseInt(props.get("--gpw-number-of-shapes")) || 12;
-    const shapeSize = parseInt(props.get("--gpw-shape-size")) || 40;
-    const lineWidth = parseInt(props.get("--gpw-line-width")) || 4;
-    const defaultPossibleColors = ["#FFF59D", "#FFAB91", "#80DEEA", "#E57373"];
-    const fillShapes = props.get("--gpw-fill-shapes").toString().trim() === "true" || false;
-    const opacity = parseFloat(props.get("--gpw-opacity")) || 1;
-    console.log("numberOfShapes", numberOfShapes);
-    console.log("shapeSize", shapeSize);
-    console.log("lineWidth", lineWidth);
-    console.log("fillShapes", fillShapes);
-    console.log("opacity", opacity);
-    console.log("=====");
-    const possibleColors = props.get("--gpw-possible-colors").length > 0 ? JSON.parse(props.get("--gpw-possible-colors")) : defaultPossibleColors;
+    const elWidth = geom.width;
+    const elHeight = geom.height;
+    const settings = getSettings(props);
     const possibleShapes = [
       PossibleShape.CIRCLE,
       PossibleShape.TRIANGLE,
@@ -89,43 +100,41 @@ registerPaint("geometricPaintWorklet", class {
       PossibleShape.PENTAGON,
       PossibleShape.HEXAGON
     ];
-    const elWidth = geom.width;
-    const elHeight = geom.height;
-    ctx.globalAlpha = opacity;
-    for (let i = 0; i < numberOfShapes; i++) {
+    ctx.globalAlpha = settings.opacity;
+    for (let i = 0; i < settings.numberOfShapes; i++) {
       const rotation = randomIntFromInterval(0, 360);
-      const selectedShape = possibleShapes[Math.floor(Math.random() * possibleShapes.length)];
+      const selectedShape = getRandomItemFromArray(possibleShapes);
       const position = {
-        x: Math.random() * elWidth,
-        y: Math.random() * elHeight
+        x: randomIntFromInterval(0, elWidth),
+        y: randomIntFromInterval(0, elHeight)
       };
-      const selectedColor = possibleColors[Math.floor(Math.random() * possibleColors.length)];
-      ctx.lineWidth = lineWidth;
+      const selectedColor = getRandomItemFromArray(settings.possibleColors);
+      ctx.lineWidth = settings.lineWidth;
       ctx.strokeStyle = selectedColor;
-      if (fillShapes) {
+      if (settings.fillShapes) {
         ctx.fillStyle = selectedColor;
       }
       ctx.beginPath();
       switch (selectedShape) {
         case PossibleShape.CIRCLE:
-          new ShapeCircle(ctx, shapeSize, position);
+          new ShapeCircle(ctx, settings.shapeSize, position);
           break;
         case PossibleShape.TRIANGLE:
-          new ShapePolygon(ctx, shapeSize, position, 3, -rotation);
+          new ShapePolygon(ctx, settings.shapeSize, position, 3, -rotation);
           break;
         case PossibleShape.SQUARE:
-          new ShapePolygon(ctx, shapeSize, position, 4, rotation);
+          new ShapePolygon(ctx, settings.shapeSize, position, 4, rotation);
           break;
         case PossibleShape.PENTAGON:
-          new ShapePolygon(ctx, shapeSize, position, 5, -rotation);
+          new ShapePolygon(ctx, settings.shapeSize, position, 5, -rotation);
           break;
         case PossibleShape.HEXAGON:
-          new ShapePolygon(ctx, shapeSize, position, 6, rotation);
+          new ShapePolygon(ctx, settings.shapeSize, position, 6, rotation);
           break;
       }
       ctx.closePath();
       ctx.stroke();
-      if (fillShapes) {
+      if (settings.fillShapes) {
         ctx.fill();
       }
     }

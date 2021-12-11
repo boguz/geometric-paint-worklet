@@ -7,18 +7,17 @@ export enum PossibleShape {
 	HEXAGON = 'HEXAGON'
 }
 
+// INTERFACES
 export interface Position {
 	x: number;
 	y: number;
 }
 
-interface Point {
-	x: number,
-	y: number
-}
-
-export interface TrianglePoints {
-	p1: Point,
-	p2: Point,
-	p3: Point,
+export interface Settings {
+	numberOfShapes: number;
+	shapeSize: number;
+	lineWidth: number;
+	fillShapes: boolean;
+	opacity: number;
+	possibleColors: string[];
 }

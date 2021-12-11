@@ -1,5 +1,8 @@
 import { BasicShape } from "./basicShape";
 
+/**
+ * Draw a circle on the context element
+ */
 export class ShapeCircle extends BasicShape {
 	constructor(ctx, size, position) {
 		super(ctx, size, position);
