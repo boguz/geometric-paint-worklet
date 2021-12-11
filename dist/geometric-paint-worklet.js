@@ -75,6 +75,12 @@ registerPaint("geometricPaintWorklet", class {
     const defaultPossibleColors = ["#FFF59D", "#FFAB91", "#80DEEA", "#E57373"];
     const fillShapes = props.get("--gpw-fill-shapes").toString().trim() === "true" || false;
     const opacity = parseFloat(props.get("--gpw-opacity")) || 1;
+    console.log("numberOfShapes", numberOfShapes);
+    console.log("shapeSize", shapeSize);
+    console.log("lineWidth", lineWidth);
+    console.log("fillShapes", fillShapes);
+    console.log("opacity", opacity);
+    console.log("=====");
     const possibleColors = props.get("--gpw-possible-colors").length > 0 ? JSON.parse(props.get("--gpw-possible-colors")) : defaultPossibleColors;
     const possibleShapes = [
       PossibleShape.CIRCLE,
