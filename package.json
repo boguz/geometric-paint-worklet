@@ -1,8 +1,11 @@
 {
-  "name": "@toujou/geometric-paint-worklet",
-  "version": "1.0.0",
-  "description": "An customisable CSS Paint Worklet that renders geometric figures to the background of any element",
-  "main": "index.html",
+  "name": "geometric-paint-worklet",
+  "version": "1.0.2",
+  "description": "A customizable CSS Paint Worklet that renders geometric figures to the background of any element",
+  "main": "dist/geometric-paint-worklet.js",
+  "files": [
+    "dist/*.js"
+  ],
   "scripts": {
     "build:js": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js --format=cjs",
     "build:js:dev": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js --format=cjs --watch"
@@ -11,13 +14,18 @@
     "type": "git",
     "url": "git+https://github.com/boguz/geometric-paint-worklet.git"
   },
-  "keywords": ["CSS Paint", "CSS Houdini", "CSS Paint Worklet", "Worklet"],
+  "keywords": [
+    "CSS Paint",
+    "CSS Houdini",
+    "CSS Paint Worklet",
+    "Worklet"
+  ],
   "author": "LuisPato",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/boguz/geometric-paint-worklet/issues"
   },
-  "homepage": "https://github.com/boguz/geometric-paint-worklet#readme",
+  "homepage": "https://boguz.github.io/geometric-paint-worklet/",
   "devDependencies": {
     "esbuild": "^0.14.2"
   }

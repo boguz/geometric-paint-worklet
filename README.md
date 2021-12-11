@@ -1,5 +1,5 @@
 # geometric-paint-worklet
-A customisable CSS Paint Worklet that renders geometric figures to the background of any element
+A customizable CSS Paint Worklet that renders geometric figures to the background of any element
 
 ![Example with large thin borders](images/site_capture.gif)
 
@@ -25,20 +25,35 @@ CSS Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Pa
 ---
 
 ## 📦 2. How to use
-1. Copy the `dist/geomatric-paint-worklet.js` file into your project
-2. Add the paint worklet module to your index.html:
+
+> ℹ️ If you want to use a CDN, skip steps 1 and 2 and instead add `<script scr="https://unpkg.com/geometric-paint-worklet"></script>` to your index.html
+
+1. You can get the worklet js file from one of the following methods:
+   
+   1.1. Copy the `dist/geomatric-paint-worklet.js` file into your project 
+   
+   1.2. Install with npm `npm install geometric-paint-worklet`
+   
+2. Import the worklet file on your index.html head:
+```html
+<script src="node_modules/geometric-paint-worklet/dist/geometric-paint-worklet.js"></script>
+```
+
+3. Add the paint worklet module to your index.html:
 ```html
 <script>
-    CSS.paintWorklet.addModule('PATH_TO_YOUR_FILE/geometric-paint-worklet.js');
+    CSS.paintWorklet.addModule('node_modules/geometric-paint-worklet/dist/geometric-paint-worklet.js');
 </script>
 ```
-3. Use the GeometricPaintWorklet on any Element. Ex:
+
+4. Use the GeometricPaintWorklet on any Element. Ex:
 ```css
 .my-element {
     background-image: paint(geometricPaintWorklet);
 }
 ```
-4. Customize it to your needs using custom CSS Variables (see below)
+
+5. Customize it to your needs using custom CSS Variables (see below)
 
 ---
 
