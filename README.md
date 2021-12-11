@@ -1,8 +1,22 @@
 # geometric-paint-worklet
 An interactive CSS Paint Worklet that renders geometric figures to the background of any element
 
-### 🧪 What are Paint Worklets?
-Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Paint” or “Houdini’s paint worklet”) which allow us to programmatically generate an image that we can then use on any CSS property that expects an image (`background-image`, `border-image`, ...).
+---
+### Table of contents
+[1. What are CSS Paint Worklets](#-1-what-are-csspaint-worklets)
+
+[2. How to use](#-2-how-to-use)
+
+[3. How to customize](#-3-how-to-customize)
+
+[4. CSS Variables](#-4-css-variables)
+
+[5. Examples](#-5-examples)
+
+---
+
+## 🧪 1. What are CSSPaint Worklets?
+CSS Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Paint” or “Houdini’s paint worklet”) which allow us to programmatically generate an image that we can then use on any CSS property that expects an image (`background-image`, `border-image`, ...).
 
 [CSS Paint API article](https://developers.google.com/web/updates/2018/01/paintapi#:~:text=CSS%20Paint%20API%20(also%20known,default%20starting%20in%20Chrome%2065.&text=CSS%20Paint%20API%20allows%20you,CSS%20property%20expects%20an%20image.
 ) on the developers.google.com
@@ -10,7 +24,9 @@ Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Paint�
 
 > ⚠️ **CSS Paint API features are experimental**: Maybe you need to take a look at the [CSS Paint Polyfill](https://github.com/GoogleChromeLabs/css-paint-polyfill)
 
-### 📦 How to use
+---
+
+## 📦 2. How to use
 1. Copy the `dist/geomatric-paint-worklet.js` file into your project
 2. Add to your index.html:
 ```html
@@ -26,7 +42,9 @@ Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Paint�
 ```
 4. Customize it to your needs using custom CSS Variables (see below)
 
-### 💈 How to customize
+---
+
+## 💈 3. How to customize
 You can customize it using css variables. Ex:
 ```css
 .nice-element {
@@ -40,7 +58,9 @@ You can customize it using css variables. Ex:
 }
 ```
 
-#### 🦖 CSS Variables
+---
+
+## 🦖 4. CSS Variables
 | Variable                  | Value Type    | Default  |
 | ------------------------- |:-------------:| --------:|
 | `--gpw-number-of-shapes`  | <number>      | 12       |
@@ -50,7 +70,9 @@ You can customize it using css variables. Ex:
 | `--gpw-fill-shapes`       | <boolean>     | false    |
 | `--gpw-opacity`           | <number>      | 1        |
 
-### 📸 Examples
+---
+
+## 📸 5. Examples
 1. Default Settings
 ```css
 .my-element {
