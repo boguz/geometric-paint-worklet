@@ -28,7 +28,7 @@ CSS Paint Worklets are part of the CSS Paint API (also known as “CSS Custom Pa
 
 ## 📦 2. How to use
 1. Copy the `dist/geomatric-paint-worklet.js` file into your project
-2. Add to your index.html:
+2. Add the paint worklet module to your index.html:
 ```html
 <script>
     CSS.paintWorklet.addModule('PATH_TO_YOUR_FILE/geometric-paint-worklet.js');
@@ -62,13 +62,13 @@ You can customize it using css variables. Ex:
 
 ## 🦖 4. CSS Variables
 | Variable                  | Value Type    | Default  |
-| ------------------------- |:-------------:| --------:|
-| `--gpw-number-of-shapes`  | <number>      | 12       |
-| `--gpw-shape-size`        | <number>      | 40       |
-| `--gpw-line-width`        | <number>      | 40       |
-| `--gpw-possible-colors`   | <array>       | ['#FFF59D', '#FFAB91', '#80DEEA', '#E57373']      |
-| `--gpw-fill-shapes`       | <boolean>     | false    |
-| `--gpw-opacity`           | <number>      | 1        |
+| ------------------------- |:------------- | :--------|
+| `--gpw-number-of-shapes`  | number        | 12       |
+| `--gpw-shape-size`        | number        | 40       |
+| `--gpw-line-width`        | number        | 40       |
+| `--gpw-possible-colors`   | array         | ['#FFF59D', '#FFAB91', '#80DEEA', '#E57373']      |
+| `--gpw-fill-shapes`       | boolean       | false    |
+| `--gpw-opacity`           | number        | 1        |
 
 ---
 
