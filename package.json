@@ -1,6 +1,6 @@
 {
   "name": "geometric-paint-worklet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A customizable CSS Paint Worklet that renders geometric figures to the background of any element",
   "main": "dist/geometric-paint-worklet.js",
   "files": [
