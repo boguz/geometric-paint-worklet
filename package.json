@@ -1,7 +1,7 @@
 {
   "name": "@toujou/geometric-paint-worklet",
   "version": "1.0.0",
-  "description": "An interactive CSS Paint Worklet that renders geometric figures to the background of any element",
+  "description": "An customisable CSS Paint Worklet that renders geometric figures to the background of any element",
   "main": "index.html",
   "scripts": {
     "build:js": "esbuild src/geometric-paint-worklet.ts --bundle --outfile=dist/geometric-paint-worklet.js --format=cjs",

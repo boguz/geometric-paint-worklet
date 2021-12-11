@@ -1,17 +1,15 @@
 # geometric-paint-worklet
-An interactive CSS Paint Worklet that renders geometric figures to the background of any element
+A customisable CSS Paint Worklet that renders geometric figures to the background of any element
+
+![Example with large thin borders](images/site_capture.gif)
 
 ---
 ### Table of contents
-[1. What are CSS Paint Worklets](#-1-what-are-csspaint-worklets)
-
-[2. How to use](#-2-how-to-use)
-
-[3. How to customize](#-3-how-to-customize)
-
-[4. CSS Variables](#-4-css-variables)
-
-[5. Examples](#-5-examples)
+1. [What are CSS Paint Worklets](#-1-what-are-csspaint-worklets)
+2. [How to use](#-2-how-to-use)
+3. [How to customize](#-3-how-to-customize)
+4. [CSS Variables](#-4-css-variables)
+5. [Examples](#-5-examples)
 
 ---
 
